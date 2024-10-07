@@ -5,29 +5,61 @@ const Page1 = () => {
   const RewardItem = ({ title, buttonText, imgSrc }) => {
     return (
       <div
-      style={{
-        position: "relative",
-        zIndex: -1,
-      }}
+        style={{
+          height: "7.5rem",
+          display: "flex",
+          alignItems: "center",
+          position: "relative",
+          margin: "0.3rem auto",
+          maxWidth: "21rem",
+          minWidth: "16rem",
+          zIndex: -1,
+        }}
       >
-        <img
-          src="/webp/box.webp"
-          alt="ticket"
+        <div
           style={{
-            width: "100%",
-            height: "auto",
+            position: "absolute",
+            height: "100%",
+            width: "fit-content",
+            zIndex: 0,
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
           }}
-        />
-        <img
-          src={imgSrc}
-          alt={title}
-          style={{ width: "100%", height: "auto" }}
-        />
+        >
+          <img
+            src="/webp/box.webp"
+            alt="ticket"
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
+          />
+        </div>
+        <section style={{ flex: 1, width: "auto", zIndex: 1 }}>
+        <div
+          style={{
+            height: "6rem",
+            width: "fit-content",
+            margin: "auto",
+            position: "relative",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <img
+            src={imgSrc}
+            alt={title}
+            style={{ width: "100%", height: "100%", }}
+          />
+        </div>
+        </section>
       </div>
     );
   };
 
-    const { boxShadow, onScrollHandler } = useScrollWithShadow();
+  const { boxShadow, onScrollHandler } = useScrollWithShadow();
 
   return (
     <div>
@@ -68,12 +100,12 @@ const Page1 = () => {
         Enjoy!
       </p>
       <div
-      onScroll={onScrollHandler}
+        onScroll={onScrollHandler}
         style={{
-            boxShadow,
+          boxShadow,
           overflowY: "auto",
-          height: "40svh",     
-          zIndex: 2,     
+          height: "40svh",
+          zIndex: 2,
         }}
       >
         {rsvp.map((reward, index) => (
